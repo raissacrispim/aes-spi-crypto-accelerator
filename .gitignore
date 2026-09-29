@@ -1,0 +1,36 @@
+# Arquivos temporários
+*.log
+*.tmp
+*.swp
+*~
+
+# Formas de onda
+*.vcd
+*.fsdb
+
+# VCS
+simv
+simv.daidir/
+csrc/
+ucli.key
+
+# Verdi
+novas.conf
+novas.rc
+verdiLog/
+nWaveLog/
+
+# Design Compiler
+*.svf
+*.mr
+*.pvl
+*.syn
+WORK/
+
+# Diretórios temporários
+build/
+work/
+
+# SpyGlass
+spyglass.out
+scripts/lint/
