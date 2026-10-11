@@ -403,8 +403,15 @@ Os seguintes pontos deverão ser definidos antes da implementação definitiva:
 
 ## 6. Referências
 
-As referências técnicas utilizadas no desenvolvimento deverão ser registradas
-nesta seção durante o projeto.
-
-Como referências primárias para o estudo detalhado, deverão ser consultadas a
-especificação oficial do AES e documentação técnica referente ao protocolo SPI.
+1. NIST. *FIPS PUB 197 — Advanced Encryption Standard (AES)*. National
+   Institute of Standards and Technology, 2001 (atualização FIPS 197-upd1,
+   2023). Disponível em: <https://doi.org/10.6028/NIST.FIPS.197-upd1>.
+   - Seção 5: transformações de rodada (SubBytes, ShiftRows, MixColumns,
+     AddRoundKey) e expansão de chave.
+   - Apêndice A: exemplos de expansão de chave.
+   - Apêndice B: exemplo de cifragem com valores intermediários por rodada
+     (referência para os testes unitários da Semana 3).
+   - Apêndice C: vetores de teste para AES-128/192/256 (referência para o
+     testbench da Semana 4).
+2. Motorola/Freescale. *SPI Block Guide V03.06* (S12SPIV3). Definição de
+   CPOL, CPHA e dos modos de operação do SPI.

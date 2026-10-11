@@ -22,8 +22,8 @@ lint, simulação, síntese, verificação formal e técnicas de low power.
 aes_spi/
 ├── docs/
 │   ├── architecture/
-│   ├── reports/
-│   └── spec/
+│   ├── reports/      # relatórios semanais, estudo AES/SPI e logs das ferramentas
+│   └── spec/         # especificação funcional (fornecida pelo instrutor)
 ├── formal/
 ├── models/       # modelos comportamentais do PLL e da memória (fora do RTL sintetizável)
 ├── rtl/
@@ -66,9 +66,18 @@ make test
 
 Esse comando executa:
 
-1. lint do RTL com SpyGlass;
-2. compilação SystemVerilog com VCS;
-3. execução do testbench com VCS.
+1. verificação de que o ambiente Synopsys está carregado;
+2. lint do RTL com SpyGlass;
+3. compilação SystemVerilog com VCS;
+4. execução do testbench com VCS.
+
+Os logs de cada etapa são salvos em `docs/reports/logs/` (`lint.log`,
+`compile.log`, `sim.log`) e versionados como evidência da entrega. O
+comando termina com erro se alguma etapa falhar, inclusive se algum teste da
+simulação falhar.
+
+Os arquivos RTL e de testbench são listados em `scripts/rtl.f` e
+`scripts/tb.f`, usados tanto pelo lint quanto pela compilação.
 
 Também é possível executar cada etapa separadamente:
 
@@ -105,6 +114,12 @@ seguida de:
 ```text
 === Fluxo concluido com sucesso ===
 ```
+
+## Documentação
+
+- `docs/reports/estudo_aes_spi.md` — estudo sobre AES (FIPS-197) e SPI.
+- `docs/reports/semana_XX.md` — relatório de cada semana.
+- `docs/backlog.md` — backlog do projeto, alinhado ao cronograma.
 
 ## Status
 

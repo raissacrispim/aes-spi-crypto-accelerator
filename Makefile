@@ -1,25 +1,43 @@
+# Fluxo mínimo: lint (SpyGlass) + compilação e simulação (VCS)
+#
+# Uso: make test
+# Antes, carregar o ambiente Synopsys: source /Tools/synopsys-scripts/snps.sh
+
+SHELL       := /bin/bash
+.SHELLFLAGS := -o pipefail -c
+
 VCS      = vcs
 SPYGLASS = spyglass
 
-RTL      = rtl/simple_and.sv
-TB       = tb/tb_simple_and.sv
+RTL_F    = scripts/rtl.f
+TB_F     = scripts/tb.f
 SIMV     = simv
+LOG_DIR  = docs/reports/logs
 
-.PHONY: all lint compile sim test clean
+.PHONY: all check-env lint compile sim test clean
 
 all: test
 
-lint:
-	@echo "=== SpyGlass Lint ==="
-	$(SPYGLASS) -batch -project scripts/lint.prj -goals "lint/lint_rtl"
+check-env:
+	@for t in $(VCS) $(SPYGLASS); do \
+		command -v $$t >/dev/null || { \
+			echo "ERRO: '$$t' nao encontrado. Execute: source /Tools/synopsys-scripts/snps.sh"; \
+			exit 1; }; \
+	done
 
-compile:
+lint: check-env
+	@echo "=== SpyGlass Lint ==="
+	@mkdir -p $(LOG_DIR)
+	$(SPYGLASS) -batch -project scripts/lint.prj -goals "lint/lint_rtl" | tee $(LOG_DIR)/lint.log
+
+compile: check-env
 	@echo "=== VCS Compile ==="
-	$(VCS) -full64 -sverilog $(RTL) $(TB) -o $(SIMV)
+	@mkdir -p $(LOG_DIR)
+	$(VCS) -full64 -sverilog -f $(RTL_F) -f $(TB_F) -o $(SIMV) | tee $(LOG_DIR)/compile.log
 
 sim: compile
 	@echo "=== VCS Simulation ==="
-	./$(SIMV)
+	./$(SIMV) | tee $(LOG_DIR)/sim.log
 
 test: lint sim
 	@echo "=== Fluxo concluido com sucesso ==="

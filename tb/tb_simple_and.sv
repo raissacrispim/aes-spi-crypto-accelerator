@@ -5,6 +5,7 @@ module tb_simple_and;
     logic a;
     logic b;
     logic y;
+    int   errors = 0;
 
     simple_and dut (
         .a(a),
@@ -12,20 +13,24 @@ module tb_simple_and;
         .y(y)
     );
 
+    task automatic check(input logic ta, input logic tb, input logic expected);
+        a = ta; b = tb; #10;
+        if (y !== expected) begin
+            $error("Erro: %b & %b = %b (esperado %b)", ta, tb, y, expected);
+            errors++;
+        end
+    endtask
+
     initial begin
         $display("=== Teste simple_and ===");
 
-        a = 0; b = 0; #10;
-        if (y !== 0) $error("Erro: 0 & 0");
+        check(0, 0, 0);
+        check(0, 1, 0);
+        check(1, 0, 0);
+        check(1, 1, 1);
 
-        a = 0; b = 1; #10;
-        if (y !== 0) $error("Erro: 0 & 1");
-
-        a = 1; b = 0; #10;
-        if (y !== 0) $error("Erro: 1 & 0");
-
-        a = 1; b = 1; #10;
-        if (y !== 1) $error("Erro: 1 & 1");
+        if (errors != 0)
+            $fatal(1, "%0d teste(s) falharam!", errors);
 
         $display("Todos os testes passaram!");
         $finish;

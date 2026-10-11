@@ -34,3 +34,6 @@ work/
 # SpyGlass
 spyglass.out
 scripts/lint/
+
+# Logs do fluxo versionados como evidência dos entregáveis
+!docs/reports/logs/*.log
