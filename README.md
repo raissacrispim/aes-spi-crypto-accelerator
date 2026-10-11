@@ -25,6 +25,7 @@ aes_spi/
 │   ├── reports/
 │   └── spec/
 ├── formal/
+├── models/       # modelos comportamentais do PLL e da memória (fora do RTL sintetizável)
 ├── rtl/
 ├── scripts/
 ├── syn/
