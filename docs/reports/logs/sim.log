@@ -1,0 +1,11 @@
+Chronologic VCS simulator copyright 1991-2025
+Contains Synopsys proprietary information.
+Compiler version X-2025.06-SP2_Full64; Runtime version X-2025.06-SP2_Full64;  Oct 11 19:02 2026
+=== Teste simple_and ===
+Todos os testes passaram!
+$finish called from file "tb/tb_simple_and.sv", line 36.
+$finish at simulation time                40000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 40000 ps
+CPU Time:      0.350 seconds;       Data structure size:   0.0Mb
+Sun Oct 11 19:02:21 2026
