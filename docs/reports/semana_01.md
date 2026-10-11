@@ -71,14 +71,21 @@ O documento `docs/reports/estudo_aes_spi.md` cobre:
 
 ## 3. Resultados
 
-Execução de `make test` em clone limpo (logs completos em
+Execução de `make test` (logs completos em
 `docs/reports/logs/`):
 
 | Etapa | Resultado |
 |-------|-----------|
-| Lint (SpyGlass) | <!-- preencher com o resumo do lint.log, ex.: 0 fatal, 0 error, 0 warning --> |
-| Compilação (VCS) | <!-- preencher: sem erros --> |
-| Simulação (VCS) | <!-- preencher: "Todos os testes passaram!" --> |
+| Lint (SpyGlass, `lint/lint_rtl`) | 0 fatal, 0 error, 0 warning, 2 infos — *Exit Code 0* |
+| Compilação (VCS) | sem erros; top `tb_simple_and`, timescale 1 ns / 1 ps |
+| Simulação (VCS) | 4/4 casos da tabela-verdade corretos — "Todos os testes passaram!" |
+| Fluxo completo | "=== Fluxo concluido com sucesso ===" |
+
+Ferramentas: SpyGlass X-2025.06-SP2 e VCS X-2025.06-SP2, servidor
+`srv-microeletronica3`, em 11/10/2026.
+
+Relatórios detalhados do SpyGlass (HTML e `moresimple.rpt`) são gerados em
+`scripts/lint/` e não são versionados; o resumo fica em `lint.log`.
 
 ## 4. Problemas encontrados
 
@@ -91,6 +98,14 @@ Execução de `make test` em clone limpo (logs completos em
   claro. Adicionada a verificação `check-env`.
 - O relatório de estudo estava em `docs/spec/`, pasta reservada para a
   especificação fornecida pelo instrutor. Movido para `docs/reports/`.
+
+- O SpyGlass avisa que as políticas clássicas usadas pelo objetivo
+  `lint/lint_rtl` (lint, morelint, starc etc.) serão descontinuadas a partir
+  da versão 2026.12, em favor do VC SpyGlass. Não afeta a versão instalada
+  (X-2025.06-SP2); fica registrado para o caso de atualização do ambiente.
+- O `simv` reexecutava a simulação por causa do ASLR da máquina (mensagem
+  `VCS_SAVE_RESTORE_INFO`). Como o fluxo não usa `$save`, foi adicionada a
+  opção `-no_save` à execução.
 
 ## 5. Próximos passos (Semana 2)
 

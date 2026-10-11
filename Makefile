@@ -37,7 +37,7 @@ compile: check-env
 
 sim: compile
 	@echo "=== VCS Simulation ==="
-	./$(SIMV) | tee $(LOG_DIR)/sim.log
+	./$(SIMV) -no_save | tee $(LOG_DIR)/sim.log
 
 test: lint sim
 	@echo "=== Fluxo concluido com sucesso ==="
