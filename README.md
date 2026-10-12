@@ -53,6 +53,23 @@ Antes de utilizar as ferramentas, carregar o ambiente:
 source /Tools/synopsys-scripts/snps.sh
 ```
 
+## Início rápido
+
+A partir de um ambiente limpo, o fluxo completo é executado com:
+
+```bash
+git clone https://github.com/raissacrispim/aes-spi-crypto-accelerator.git aes_spi
+cd aes_spi
+source /Tools/synopsys-scripts/snps.sh
+make test
+```
+
+Para obter exatamente a versão de uma entrega, use a *tag* correspondente:
+
+```bash
+git checkout w01-setup-v1.1
+```
+
 ## Fluxo mínimo
 
 O ambiente inicial utiliza o módulo `simple_and` apenas para validar a
@@ -98,9 +115,7 @@ make clean
 O lint do módulo de teste deve terminar com:
 
 ```text
-0 fatal
-0 error
-0 warning
+Reported Messages:         0 Fatals,    0 Errors,      0 Warnings
 ```
 
 A simulação deve apresentar:
@@ -115,12 +130,25 @@ seguida de:
 === Fluxo concluido com sucesso ===
 ```
 
+Para conferir rapidamente os resultados nos logs:
+
+```bash
+grep "Reported Messages" docs/reports/logs/lint.log
+grep "Todos os testes" docs/reports/logs/sim.log
+```
+
 ## Documentação
 
 - `docs/reports/estudo_aes_spi.md` — estudo sobre AES (FIPS-197) e SPI.
 - `docs/reports/semana_XX.md` — relatório de cada semana.
 - `docs/backlog.md` — backlog do projeto, alinhado ao cronograma.
 
+## Entregas
+
+| Semana | Tag | Conteúdo |
+|--------|-----|----------|
+| 1 | `w01-setup-v1.1` | ambiente, estrutura do repositório, backlog, fluxo mínimo e estudo AES/SPI |
+
 ## Status
 
-Semana 1 — configuração inicial do ambiente e estruturação do projeto.
+Semana 1 concluída. Próxima etapa: Semana 2 — arquitetura e microarquitetura.
