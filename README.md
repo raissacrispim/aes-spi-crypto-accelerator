@@ -58,11 +58,15 @@ source /Tools/synopsys-scripts/snps.sh
 A partir de um ambiente limpo, o fluxo completo é executado com:
 
 ```bash
-git clone https://github.com/raissacrispim/aes-spi-crypto-accelerator.git aes_spi
-cd aes_spi
+git clone https://github.com/raissacrispim/aes-spi-crypto-accelerator.git
+cd aes-spi-crypto-accelerator
 source /Tools/synopsys-scripts/snps.sh
 make test
 ```
+
+O `git clone` cria a pasta `aes-spi-crypto-accelerator` no diretório atual;
+se ela já existir, escolha outro nome no final do comando
+(`git clone <url> outro_nome`) e entre nessa pasta.
 
 Para obter exatamente a versão de uma entrega, use a *tag* correspondente:
 
