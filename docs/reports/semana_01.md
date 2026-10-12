@@ -38,7 +38,7 @@ Ferramentas Synopsys, carregadas com `source /Tools/synopsys-scripts/snps.sh`:
 ### 2.2 Fluxo mínimo
 
 ```bash
-git clone <url-do-repositorio>
+git clone https://github.com/raissacrispim/aes-spi-crypto-accelerator.git
 cd aes-spi-crypto-accelerator
 source /Tools/synopsys-scripts/snps.sh
 make test

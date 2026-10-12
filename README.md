@@ -19,7 +19,7 @@ lint, simulação, síntese, verificação formal e técnicas de low power.
 ## Estrutura do repositório
 
 ```text
-aes_spi/
+aes-spi-crypto-accelerator/
 ├── docs/
 │   ├── architecture/
 │   ├── reports/      # relatórios semanais, estudo AES/SPI e logs das ferramentas
