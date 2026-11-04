@@ -29,6 +29,9 @@ read_file -type hdl rtl/minisoc_aes/minisoc_aes_sub_bytes.sv
 read_file -type hdl rtl/minisoc_aes/minisoc_aes_inv_sub_bytes.sv
 read_file -type hdl rtl/minisoc_aes/minisoc_aes_shift_rows.sv
 read_file -type hdl rtl/minisoc_aes/minisoc_aes_inv_shift_rows.sv
+read_file -type hdl rtl/minisoc_aes/minisoc_aes_mix_columns.sv
+read_file -type hdl rtl/minisoc_aes/minisoc_aes_inv_mix_columns.sv
+read_file -type hdl rtl/minisoc_aes/minisoc_aes_add_round_key.sv
 current_methodology: info: methodology is now `/Tools/synopsys/spyglass/X-2025.06-SP2/SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff'
 current_goal: info: removed current goals (sg_shell is now back to methodology scope)
                     (selected methodology is `/Tools/synopsys/spyglass/X-2025.06-SP2/SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff')
@@ -63,8 +66,8 @@ Loading clock-reset (SpyGlass_vX-2025.06-SP2) ... (picked from /Tools/synopsys/s
 INFO [6]    Work Directory 'build/lint/minisoc_aes_inv_sub_bytes/minisoc_aes_inv_sub_bytes/WORK' does not exist.
 
 INFO [75]    Creating the Work Directory 'build/lint/minisoc_aes_inv_sub_bytes/minisoc_aes_inv_sub_bytes/WORK/64' for 64bit  precompiled dump.
-Checking Rule SGDC_power_est29 (Rule 1 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
-Checking Rule PECHECK04 (Rule 2 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
+Checking Rule SGDC_power_est29 (Rule 1 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
+Checking Rule PECHECK04 (Rule 2 of total 292) .... done (Time = 0.02s, Memory = 0.0K)
 Checking Rule PECHECK18 (Rule 3 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule PEMVDD01 (Rule 4 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule PrecompileLibCheck01 (Rule 5 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -83,7 +86,7 @@ Checking Rule SGDC_voltagedomain05 (Rule 17 of total 292) .... done (Time = 0.00
 Checking Rule SGDC_voltagedomain06 (Rule 18 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule SGDC_voltagedomain07 (Rule 19 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule SGDC_powerdomainoutputs02 (Rule 20 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-Checking Rule SGDC_supply01 (Rule 21 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
+Checking Rule SGDC_supply01 (Rule 21 of total 292) .... done (Time = 0.00s, Memory = 128.0K)
 Checking Rule SGDC_waive01 (Rule 22 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule SGDC_waive02 (Rule 23 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule SGDC_waive03 (Rule 24 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -113,10 +116,10 @@ Checking Rule SGDC_ungroup01 (Rule 47 of total 292) .... done (Time = 0.00s, Mem
 Checking Rule SGDC_abstract_port06 (Rule 48 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule SGDC_abstract_port14 (Rule 49 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule SGDC_abstract_port15 (Rule 50 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-Checking Rule SGDC_abstract_port18 (Rule 51 of total 292) .... done (Time = 0.00s, Memory = 128.0K)
+Checking Rule SGDC_abstract_port18 (Rule 51 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule sdc_init_rule (Rule 52 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule CMD_ignorelibs01 (Rule 53 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-Checking Rule ReportRuleNotRun (Rule 54 of total 292) .... done (Time = 0.02s, Memory = 0.0K)
+Checking Rule ReportRuleNotRun (Rule 54 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
 Checking Rule STARC05-2.3.1.2c (Rule 55 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule W442a (Rule 56 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule W442b (Rule 57 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -138,6 +141,9 @@ Checking Rule ReportIgnoreSummary (Rule 69 of total 292) .... done (Time = 0.00s
  Analyzing source file "rtl/minisoc_aes/minisoc_aes_inv_sub_bytes.sv" ....
  Analyzing source file "rtl/minisoc_aes/minisoc_aes_shift_rows.sv" ....
  Analyzing source file "rtl/minisoc_aes/minisoc_aes_inv_shift_rows.sv" ....
+ Analyzing source file "rtl/minisoc_aes/minisoc_aes_mix_columns.sv" ....
+ Analyzing source file "rtl/minisoc_aes/minisoc_aes_inv_mix_columns.sv" ....
+ Analyzing source file "rtl/minisoc_aes/minisoc_aes_add_round_key.sv" ....
  Elaborating Top Verilog Design Unit 'minisoc_aes_inv_sub_bytes' ..... done
 Checking Rule ElabSummary (Rule 70 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule ViolationLimitReached (Rule 71 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -190,8 +196,8 @@ Checking Rule W421 (Rule 110 of total 292) .... done (Time = 0.00s, Memory = 0.0
 Checking Rule W424 (Rule 111 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule W467 (Rule 112 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule Prereqs_RegInputOutputs (Rule 113 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-Checking Rule PragmaComments-ML (Rule 114 of total 292) .... done (Time = 0.00s, Memory = 200.0K)
-Checking Rule PragmaComments-ML (Rule 115 of total 292) .... done (Time = 0.00s, Memory = -72.0K)
+Checking Rule PragmaComments-ML (Rule 114 of total 292) .... done (Time = 0.00s, Memory = 64.0K)
+Checking Rule PragmaComments-ML (Rule 115 of total 292) .... done (Time = 0.00s, Memory = 64.0K)
 Checking Rule CheckDelayTimescale-ML (Rule 116 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule Prereqs_CheckTimeUnitandPrecision-ML (Rule 117 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking ELABDU Rules for designUnit minisoc_aes_inv_sub_bytes
@@ -226,7 +232,7 @@ Checking ELABDU Rules for designUnit minisoc_aes_inv_sub_bytes
     Checking Rule W218 (Rule 146 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W224 (Rule 147 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W263 (Rule 148 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-    Checking Rule W289 (Rule 149 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
+    Checking Rule W289 (Rule 149 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W337 (Rule 150 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W416 (Rule 151 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W352 (Rule 152 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -251,7 +257,7 @@ Checking ELABDU Rules for designUnit minisoc_aes_inv_sub_bytes
     Checking Rule W505 (Rule 171 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W505 (Rule 172 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W528 (Rule 173 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-    Checking Rule W528 (Rule 174 of total 292) .... done (Time = 0.00s, Memory = 512.0K)
+    Checking Rule W528 (Rule 174 of total 292) .... done (Time = 0.00s, Memory = 640.0K)
     Checking Rule Prereqs_Usage (Rule 175 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule Prereqs_ConstantInput-ML (Rule 176 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule ReportPortInfo-ML (Rule 177 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -295,7 +301,7 @@ Checking ELABDU Rules for designUnit minisoc_aes_inv_sbox
     Checking Rule W224 (Rule 147 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W263 (Rule 148 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W289 (Rule 149 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-    Checking Rule W337 (Rule 150 of total 292) .... done (Time = 0.00s, Memory = 128.0K)
+    Checking Rule W337 (Rule 150 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W416 (Rule 151 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W352 (Rule 152 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W362 (Rule 153 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -307,19 +313,19 @@ Checking ELABDU Rules for designUnit minisoc_aes_inv_sbox
     Checking Rule W122 (Rule 159 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W123 (Rule 160 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W156 (Rule 161 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-    Checking Rule W71 (Rule 162 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
+    Checking Rule W71 (Rule 162 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W240 (Rule 163 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W240 (Rule 164 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W287a (Rule 165 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W287b (Rule 166 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-    Checking Rule W293 (Rule 167 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-    Checking Rule W398 (Rule 168 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
+    Checking Rule W293 (Rule 167 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
+    Checking Rule W398 (Rule 168 of total 292) .... done (Time = 0.00s, Memory = 128.0K)
     Checking Rule W424 (Rule 169 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W467 (Rule 170 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W505 (Rule 171 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W505 (Rule 172 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W528 (Rule 173 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-    Checking Rule W528 (Rule 174 of total 292) .... done (Time = 0.00s, Memory = 512.0K)
+    Checking Rule W528 (Rule 174 of total 292) .... done (Time = 0.00s, Memory = 640.0K)
     Checking Rule Prereqs_Usage (Rule 175 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule Prereqs_ConstantInput-ML (Rule 176 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule ReportPortInfo-ML (Rule 177 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -398,13 +404,13 @@ Checking Rule ReportUngroup (Rule 225 of total 292) .... done (Time = 0.00s, Mem
 Checking Rule LINT_portReten (Rule 226 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule SGDC_abstract_port21 (Rule 227 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule InferLatch (Rule 228 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-Checking Rule UndrivenInTerm-ML (Rule 229 of total 292) .... done (Time = 0.01s, Memory = 128.0K)
-Checking Rule CheckDelayFlopRacePreReq_2-ML (Rule 230 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
+Checking Rule UndrivenInTerm-ML (Rule 229 of total 292) .... done (Time = 0.00s, Memory = 128.0K)
+Checking Rule CheckDelayFlopRacePreReq_2-ML (Rule 230 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
 Checking Rule SGDC_assume_path05 (Rule 231 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
  Flattening minisoc_aes_inv_sub_bytes (.lib instances separately flattened) ....
  Flattening completed
 Checking Rule SGDC_set_case_analysis_LC (Rule 232 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-Checking Rule BufClock (Rule 233 of total 292) .... done (Time = 0.01s, Memory = 896.0K)
+Checking Rule BufClock (Rule 233 of total 292) .... done (Time = 0.01s, Memory = 768.0K)
 Checking Rule CombLoop (Rule 234 of total 292) .... done (Time = 0.01s, Memory = 768.0K)
 Checking Rule STARC05-2.5.1.2 (Rule 235 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule STARC05-1.3.1.3 (Rule 236 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -412,9 +418,9 @@ Checking Rule STARC05-1.4.3.4 (Rule 237 of total 292) .... done (Time = 0.00s, M
 Checking Rule FlopClockConstant (Rule 238 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule FlopSRConst (Rule 239 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule FlopEConst (Rule 240 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-Checking Rule checkPinConnectedToSupply (Rule 241 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
+Checking Rule checkPinConnectedToSupply (Rule 241 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
 Checking Rule W392 (Rule 242 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-Checking Rule W415 (Rule 243 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
+Checking Rule W415 (Rule 243 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule LatchFeedback (Rule 244 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
 Checking Rule STARC05-2.4.1.5 (Rule 245 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule STARC05-1.2.1.2 (Rule 246 of total 292) .... done (Time = 0.00s, Memory = 0.0K)

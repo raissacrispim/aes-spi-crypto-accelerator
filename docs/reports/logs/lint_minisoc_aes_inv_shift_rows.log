@@ -29,6 +29,9 @@ read_file -type hdl rtl/minisoc_aes/minisoc_aes_sub_bytes.sv
 read_file -type hdl rtl/minisoc_aes/minisoc_aes_inv_sub_bytes.sv
 read_file -type hdl rtl/minisoc_aes/minisoc_aes_shift_rows.sv
 read_file -type hdl rtl/minisoc_aes/minisoc_aes_inv_shift_rows.sv
+read_file -type hdl rtl/minisoc_aes/minisoc_aes_mix_columns.sv
+read_file -type hdl rtl/minisoc_aes/minisoc_aes_inv_mix_columns.sv
+read_file -type hdl rtl/minisoc_aes/minisoc_aes_add_round_key.sv
 current_methodology: info: methodology is now `/Tools/synopsys/spyglass/X-2025.06-SP2/SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff'
 current_goal: info: removed current goals (sg_shell is now back to methodology scope)
                     (selected methodology is `/Tools/synopsys/spyglass/X-2025.06-SP2/SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff')
@@ -64,7 +67,7 @@ INFO [6]    Work Directory 'build/lint/minisoc_aes_inv_shift_rows/minisoc_aes_in
 
 INFO [75]    Creating the Work Directory 'build/lint/minisoc_aes_inv_shift_rows/minisoc_aes_inv_shift_rows/WORK/64' for 64bit  precompiled dump.
 Checking Rule SGDC_power_est29 (Rule 1 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-Checking Rule PECHECK04 (Rule 2 of total 292) .... done (Time = 0.02s, Memory = 0.0K)
+Checking Rule PECHECK04 (Rule 2 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule PECHECK18 (Rule 3 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule PEMVDD01 (Rule 4 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule PrecompileLibCheck01 (Rule 5 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -73,7 +76,7 @@ Checking Rule PrecompileLibCheck03 (Rule 7 of total 292) .... done (Time = 0.00s
 Checking Rule PrecompileLibCheck04 (Rule 8 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule AbstractInterface (Rule 9 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule SGDC_assume_path01 (Rule 10 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-Checking Rule SGDC_sdcschema02 (Rule 11 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
+Checking Rule SGDC_sdcschema02 (Rule 11 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
 Checking Rule SGDC_clock05 (Rule 12 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule SGDC_clock09 (Rule 13 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule SGDC_force_ta05 (Rule 14 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -116,7 +119,7 @@ Checking Rule SGDC_abstract_port15 (Rule 50 of total 292) .... done (Time = 0.00
 Checking Rule SGDC_abstract_port18 (Rule 51 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule sdc_init_rule (Rule 52 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule CMD_ignorelibs01 (Rule 53 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-Checking Rule ReportRuleNotRun (Rule 54 of total 292) .... done (Time = 0.03s, Memory = 0.0K)
+Checking Rule ReportRuleNotRun (Rule 54 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
 Checking Rule STARC05-2.3.1.2c (Rule 55 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule W442a (Rule 56 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule W442b (Rule 57 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -138,6 +141,9 @@ Checking Rule ReportIgnoreSummary (Rule 69 of total 292) .... done (Time = 0.00s
  Analyzing source file "rtl/minisoc_aes/minisoc_aes_inv_sub_bytes.sv" ....
  Analyzing source file "rtl/minisoc_aes/minisoc_aes_shift_rows.sv" ....
  Analyzing source file "rtl/minisoc_aes/minisoc_aes_inv_shift_rows.sv" ....
+ Analyzing source file "rtl/minisoc_aes/minisoc_aes_mix_columns.sv" ....
+ Analyzing source file "rtl/minisoc_aes/minisoc_aes_inv_mix_columns.sv" ....
+ Analyzing source file "rtl/minisoc_aes/minisoc_aes_add_round_key.sv" ....
  Elaborating Top Verilog Design Unit 'minisoc_aes_inv_shift_rows' ..... done
 Checking Rule ElabSummary (Rule 70 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule ViolationLimitReached (Rule 71 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -151,7 +157,7 @@ Checking Rule DetectTopDesignUnits (Rule 73 of total 292)
  .... done (Time = 0.00s, Memory = 0.0K)
 Performing semantic checks on SGDC contents
 Checking Rule SGDC_testmode03 (Rule 74 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-Checking Rule PECHECK09 (Rule 75 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
+Checking Rule PECHECK09 (Rule 75 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
 Checking Rule Ac_multitop01 (Rule 76 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule ReportObsoletePragmas (Rule 77 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule ReportCksum (Rule 78 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -198,7 +204,7 @@ Checking ELABDU Rules for designUnit minisoc_aes_inv_shift_rows
     Checking Rule Ac_classify_param01 (Rule 118 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule AcOvlRtl (Rule 119 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule AcOvlRtl (Rule 120 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-    Checking Rule GenTopLevelBlocksForAutoSoc (Rule 121 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
+    Checking Rule GenTopLevelBlocksForAutoSoc (Rule 121 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule Prereqs_InferLatch (Rule 122 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule STARC05-2.1.4.5 (Rule 123 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule STARC05-2.1.5.3 (Rule 124 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -219,7 +225,7 @@ Checking ELABDU Rules for designUnit minisoc_aes_inv_shift_rows
     Checking Rule W19 (Rule 139 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W66 (Rule 140 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W116 (Rule 141 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-    Checking Rule W123 (Rule 142 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
+    Checking Rule W123 (Rule 142 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W156 (Rule 143 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W215 (Rule 144 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W216 (Rule 145 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -234,7 +240,7 @@ Checking ELABDU Rules for designUnit minisoc_aes_inv_shift_rows
     Checking Rule W415a (Rule 154 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W486 (Rule 155 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W499 (Rule 156 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-    Checking Rule W502 (Rule 157 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
+    Checking Rule W502 (Rule 157 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
     Checking Rule W116 (Rule 158 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W122 (Rule 159 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
     Checking Rule W123 (Rule 160 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -271,7 +277,7 @@ Checking Rule SGDC_waive31 (Rule 189 of total 292) .... done (Time = 0.00s, Memo
 Checking Rule SGDC_waive35 (Rule 190 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
  Synthesizing module: minisoc_aes_inv_shift_rows (elaborated name: minisoc_aes_inv_shift_rows) ... (Module 1 of total 1)  done 
  Synthesis completed.
-Checking Rule InferBlackBox (Rule 191 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
+Checking Rule InferBlackBox (Rule 191 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule checkCMD_mthresh (Rule 192 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 
 INFO [234]    Saving design database in directory 'build/lint/minisoc_aes_inv_shift_rows/minisoc_aes_inv_shift_rows/.SG_SaveRestoreDB/autogenerated__default_snapshot' ...
