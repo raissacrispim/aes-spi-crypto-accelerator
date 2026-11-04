@@ -26,10 +26,11 @@ Cada entrega é identificada por *tag* e acompanhada de
 
 ## Semana 3 — Microarquitetura e transformações de rodada (06/11)
 
-- [ ] Documento de microarquitetura v1.0: diagrama interno, microarquitetura do AES, FSM do `minisoc_aes_top`, CDC `spi_sclk` × `clk` por toggle (§5.3), sequência de reset (§4.2).
-- [ ] MixColumns e AddRoundKey.
-- [ ] InvSubBytes, InvShiftRows, InvMixColumns.
-- [ ] Testes unitários: Apêndice B (cifragem) e C.1 (cifragem inversa).
+- [x] Documento de microarquitetura v1.0: diagrama interno, microarquitetura do AES, FSM do `minisoc_aes_top`, CDC `spi_sclk` × `clk` por toggle (§5.3), sequência de reset (§4.2).
+- [x] MixColumns e AddRoundKey.
+- [x] InvSubBytes, InvShiftRows, InvMixColumns.
+- [x] Testes unitários: Apêndice B (cifragem) e C.1 (cifragem inversa).
+- [ ] Execução com VCS/SpyGlass, logs e relatório `semana_03.md` completos.
 - [ ] Apresentação da microarquitetura ao verificador parceiro.
 
 **Aceite:** microarquitetura aprovada na defesa; transformações conferem; lint sem erros.

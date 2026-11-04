@@ -137,6 +137,7 @@ grep -h "PASS\|FAIL" docs/reports/logs/sim_*.log
 
 ## Documentação
 
+- `docs/architecture/microarquitetura_v1.0.md` — microarquitetura do MiniSoC AES.
 - `docs/reports/estudo_aes_spi.md` — estudo sobre AES (FIPS-197) e SPI.
 - `docs/reports/semana_XX.md` — relatório de cada semana.
 - `docs/backlog.md` — backlog do projeto, alinhado ao cronograma.
@@ -147,7 +148,8 @@ grep -h "PASS\|FAIL" docs/reports/logs/sim_*.log
 |--------|-----|----------|
 | 1 | `w01-setup-v1.1` | ambiente, estrutura do repositório, backlog, fluxo mínimo e estudo AES/SPI |
 | 2 | `w02-sbox-v1.0` | S-box, SubBytes, ShiftRows (e inversas) + testbenches |
+| 3 | `w03-uarch-v1.0` | microarquitetura v1.0 + todas as transformações de rodada |
 
 ## Status
 
-Semana 2 concluída. Próxima etapa: Semana 3 — microarquitetura e transformações de rodada.
+Semana 3 em andamento — microarquitetura e transformações de rodada.
