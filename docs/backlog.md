@@ -30,7 +30,7 @@ Cada entrega é identificada por *tag* e acompanhada de
 - [x] MixColumns e AddRoundKey.
 - [x] InvSubBytes, InvShiftRows, InvMixColumns.
 - [x] Testes unitários: Apêndice B (cifragem) e C.1 (cifragem inversa).
-- [ ] Execução com VCS/SpyGlass, logs e relatório `semana_03.md` completos.
+- [x] Execução com VCS/SpyGlass, logs e relatório `semana_03.md` completos.
 - [ ] Apresentação da microarquitetura ao verificador parceiro.
 
 **Aceite:** microarquitetura aprovada na defesa; transformações conferem; lint sem erros.
