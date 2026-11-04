@@ -74,10 +74,14 @@ um XOR invertido em AddRoundKey) e falhou nos três casos.
 
 | Etapa | Resultado |
 |-------|-----------|
-| `minisoc_aes_sbox_tb` | <!-- preencher --> |
-| `minisoc_aes_sub_shift_tb` | <!-- preencher --> |
-| `minisoc_aes_round_tb` | <!-- preencher: PASS (21 verificacoes) --> |
-| Lint (7 módulos de topo) | <!-- preencher: 0 fatal, 0 error, 0 warning em cada --> |
+| `minisoc_aes_sbox_tb` | **PASS** — 514 verificações |
+| `minisoc_aes_sub_shift_tb` | **PASS** — 20 verificações |
+| `minisoc_aes_round_tb` | **PASS** — 21 verificações (incluindo cifragem e decriptação completas dos Apêndices B e C.1) |
+| Lint dos 7 módulos de topo (`sub_bytes`, `inv_sub_bytes`, `shift_rows`, `inv_shift_rows`, `mix_columns`, `inv_mix_columns`, `add_round_key`) | 0 fatal, 0 error, 0 warning, 2 infos em cada |
+| Fluxo completo (`make test`) | `=== Fluxo concluido com sucesso ===` |
+
+Ferramentas: SpyGlass X-2025.06-SP2 e VCS X-2025.06-SP2, em 04/11/2026. Logs
+completos em `docs/reports/logs/`.
 
 ## 4. Problemas encontrados
 
