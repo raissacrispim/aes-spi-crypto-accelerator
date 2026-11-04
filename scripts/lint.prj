@@ -1,3 +1,0 @@
-read_file -type sourcelist scripts/rtl.f
-set_option enableSV yes
-set_option top simple_and

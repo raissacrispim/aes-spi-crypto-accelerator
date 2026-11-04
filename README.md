@@ -1,7 +1,11 @@
-# AES SPI Crypto Accelerator
+# AES SPI Crypto Accelerator — MiniSoC AES
 
-Projeto hands-on de desenvolvimento RTL de um acelerador criptográfico AES
+Projeto hands-on de desenvolvimento RTL de um acelerador criptográfico AES-128
 controlado através de uma interface SPI.
+
+Especificação de referência: **Block Guide MiniSoC AES v1.0.0** (fornecido
+pelo instrutor). Interfaces de topo, nomes de módulos e arquivos, mapa de
+registradores, protocolo SPI e modelo de programação seguem esse documento.
 
 ## Objetivo
 
@@ -21,19 +25,22 @@ lint, simulação, síntese, verificação formal e técnicas de low power.
 ```text
 aes-spi-crypto-accelerator/
 ├── docs/
-│   ├── architecture/
-│   ├── reports/      # relatórios semanais, estudo AES/SPI e logs das ferramentas
-│   └── spec/         # especificação funcional (fornecida pelo instrutor)
-├── formal/
-├── models/       # modelos comportamentais do PLL e da memória (fora do RTL sintetizável)
-├── rtl/
-├── scripts/
-├── syn/
-├── tb/
-├── upf/
+│   ├── architecture/      # microarquitetura e arquitetura de energia
+│   ├── reports/           # relatórios semanais, estudo AES/SPI e logs
+│   ├── spec/              # especificação (Block Guide)
+│   └── backlog.md
+├── rtl/                   # organização da seção 10 do Block Guide
+│   ├── minisoc_aes/       # AES: transformações, datapath, expansão de chave, engine
+│   ├── minisoc_mem/       # memória compartilhada 1024 x 32
+│   ├── minisoc_pll/       # PLL mock (modelo de integração)
+│   └── minisoc_spi/       # front-end SPI e banco de registradores
+├── tb/                    # testbenches e modelo de referência
+├── formal/                # scripts e relatórios do Formality
+├── syn/                   # SDC, scripts e relatórios de síntese
+├── upf/                   # arquivos UPF e relatórios
+├── scripts/               # automação do fluxo (rtl.f)
 ├── Makefile
 └── README.md
-
 ```
 
 ## Ambiente
@@ -74,61 +81,47 @@ Para obter exatamente a versão de uma entrega, use a *tag* correspondente:
 git checkout w01-setup-v1.1
 ```
 
-## Fluxo mínimo
+## Fluxo
 
-O ambiente inicial utiliza o módulo `simple_and` apenas para validar a
-infraestrutura de desenvolvimento.
-
-Executar todo o fluxo:
-
-```bash
-make test
-```
-
-Esse comando executa:
+`make test` executa, em sequência:
 
 1. verificação de que o ambiente Synopsys está carregado;
-2. lint do RTL com SpyGlass;
-3. compilação SystemVerilog com VCS;
-4. execução do testbench com VCS.
+2. lint (SpyGlass, goal `lint/lint_rtl`) de cada módulo listado em `LINT_TOPS`;
+3. compilação e simulação (VCS) de cada testbench listado em `TESTS`.
 
-Os logs de cada etapa são salvos em `docs/reports/logs/` (`lint.log`,
-`compile.log`, `sim.log`) e versionados como evidência da entrega. O
-comando termina com erro se alguma etapa falhar, inclusive se algum teste da
-simulação falhar.
+O comando termina com erro se alguma etapa falhar, inclusive se algum teste
+falhar. Os arquivos RTL são listados em `scripts/rtl.f`.
 
-Os arquivos RTL e de testbench são listados em `scripts/rtl.f` e
-`scripts/tb.f`, usados tanto pelo lint quanto pela compilação.
-
-Também é possível executar cada etapa separadamente:
+Comandos individuais:
 
 ```bash
-make lint
-make compile
-make sim
+make lint                              # somente lint
+make sim                               # somente simulação
+make lint-minisoc_aes_sub_bytes        # lint de um módulo
+make sim-minisoc_aes_sbox_tb           # um testbench
+make clean                             # remove os arquivos gerados
 ```
 
-Para remover os arquivos gerados:
+Os arquivos gerados ficam em `build/` (não versionado). Os logs ficam em
+`docs/reports/logs/` e são versionados como evidência das entregas:
+`lint_<módulo>.log`, `compile_<testbench>.log` e `sim_<testbench>.log`.
 
-```bash
-make clean
-```
+## Testbenches
+
+| Testbench | O que verifica |
+|-----------|----------------|
+| `minisoc_aes_sbox_tb` | S-box e S-box inversa nas 256 entradas, contra referência calculada em GF(2^8) |
+| `minisoc_aes_sub_shift_tb` | SubBytes, ShiftRows e inversas com os vetores da FIPS-197 (Apêndices B e C.1) |
 
 ## Resultado esperado
 
-O lint do módulo de teste deve terminar com:
+Cada lint deve terminar com:
 
 ```text
 Reported Messages:         0 Fatals,    0 Errors,      0 Warnings
 ```
 
-A simulação deve apresentar:
-
-```text
-Todos os testes passaram!
-```
-
-seguida de:
+Cada testbench imprime uma linha `PASS: ...`, e o fluxo termina com:
 
 ```text
 === Fluxo concluido com sucesso ===
@@ -137,8 +130,8 @@ seguida de:
 Para conferir rapidamente os resultados nos logs:
 
 ```bash
-grep "Reported Messages" docs/reports/logs/lint.log
-grep "Todos os testes" docs/reports/logs/sim.log
+grep "Reported Messages" docs/reports/logs/lint_*.log
+grep -h "PASS\|FAIL" docs/reports/logs/sim_*.log
 ```
 
 ## Documentação
@@ -152,7 +145,8 @@ grep "Todos os testes" docs/reports/logs/sim.log
 | Semana | Tag | Conteúdo |
 |--------|-----|----------|
 | 1 | `w01-setup-v1.1` | ambiente, estrutura do repositório, backlog, fluxo mínimo e estudo AES/SPI |
+| 2 | `w02-sbox-v1.0` | S-box, SubBytes, ShiftRows (e inversas) + testbenches |
 
 ## Status
 
-Semana 1 concluída. Próxima etapa: Semana 2 — arquitetura e microarquitetura.
+Semana 2 concluída. Próxima etapa: Semana 3 — microarquitetura e transformações de rodada.

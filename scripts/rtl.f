@@ -1,1 +1,6 @@
-rtl/simple_and.sv
+rtl/minisoc_aes/minisoc_aes_sbox.sv
+rtl/minisoc_aes/minisoc_aes_inv_sbox.sv
+rtl/minisoc_aes/minisoc_aes_sub_bytes.sv
+rtl/minisoc_aes/minisoc_aes_inv_sub_bytes.sv
+rtl/minisoc_aes/minisoc_aes_shift_rows.sv
+rtl/minisoc_aes/minisoc_aes_inv_shift_rows.sv
