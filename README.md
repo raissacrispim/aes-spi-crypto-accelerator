@@ -112,6 +112,7 @@ Os arquivos gerados ficam em `build/` (não versionado). Os logs ficam em
 |-----------|----------------|
 | `minisoc_aes_sbox_tb` | S-box e S-box inversa nas 256 entradas, contra referência calculada em GF(2^8) |
 | `minisoc_aes_sub_shift_tb` | SubBytes, ShiftRows e inversas com os vetores da FIPS-197 (Apêndices B e C.1) |
+| `minisoc_aes_round_tb` | MixColumns, InvMixColumns e AddRoundKey (Apêndices B e C.1) e cifragem/decriptação completas encadeando todas as transformações |
 
 ## Resultado esperado
 

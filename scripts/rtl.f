@@ -4,3 +4,6 @@ rtl/minisoc_aes/minisoc_aes_sub_bytes.sv
 rtl/minisoc_aes/minisoc_aes_inv_sub_bytes.sv
 rtl/minisoc_aes/minisoc_aes_shift_rows.sv
 rtl/minisoc_aes/minisoc_aes_inv_shift_rows.sv
+rtl/minisoc_aes/minisoc_aes_mix_columns.sv
+rtl/minisoc_aes/minisoc_aes_inv_mix_columns.sv
+rtl/minisoc_aes/minisoc_aes_add_round_key.sv
