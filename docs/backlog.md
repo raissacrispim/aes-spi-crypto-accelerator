@@ -20,7 +20,7 @@ Cada entrega é identificada por *tag* e acompanhada de
 - [x] Testbench: S-box nas 256 entradas; Apêndice B (rodadas 1 e 10).
 - [x] Leitura das seções 1–3 e 8 do Block Guide e lista de dúvidas.
 - [x] Reorganização de `rtl/` conforme a seção 10 do Block Guide.
-- [ ] Execução com VCS/SpyGlass, logs e relatório `semana_02.md` completos.
+- [x] Execução com VCS/SpyGlass, logs e relatório `semana_02.md` completos.
 
 **Aceite:** um comando; PASS na S-box e no Apêndice B; lint sem erros.
 

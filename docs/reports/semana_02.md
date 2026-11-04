@@ -82,9 +82,18 @@ Os logs são gravados em `docs/reports/logs/` (`lint_<módulo>.log`,
 
 | Etapa | Resultado |
 |-------|-----------|
-| `minisoc_aes_sbox_tb` | <!-- preencher: PASS (514 verificacoes) --> |
-| `minisoc_aes_sub_shift_tb` | <!-- preencher: PASS (20 verificacoes) --> |
-| Lint (4 módulos de topo) | <!-- preencher: 0 fatal, 0 error, 0 warning em cada --> |
+| `minisoc_aes_sbox_tb` | **PASS** — 514 verificações (256 S-box + 256 S-box inversa + 2 valores do escopo) |
+| `minisoc_aes_sub_shift_tb` | **PASS** — 20 verificações (Apêndice B, rodadas 1, 2, 9 e 10; Apêndice C.1, rodadas 1 e 10) |
+| Lint `minisoc_aes_sub_bytes` | 0 fatal, 0 error, 0 warning, 2 infos |
+| Lint `minisoc_aes_inv_sub_bytes` | 0 fatal, 0 error, 0 warning, 2 infos |
+| Lint `minisoc_aes_shift_rows` | 0 fatal, 0 error, 0 warning, 2 infos |
+| Lint `minisoc_aes_inv_shift_rows` | 0 fatal, 0 error, 0 warning, 2 infos |
+| Fluxo completo (`make test`) | `=== Fluxo concluido com sucesso ===` |
+
+Ferramentas: SpyGlass X-2025.06-SP2 e VCS X-2025.06-SP2, em 04/11/2026. Logs
+completos em `docs/reports/logs/`. O lint de `minisoc_aes_sub_bytes` e
+`minisoc_aes_inv_sub_bytes` cobre também `minisoc_aes_sbox` e
+`minisoc_aes_inv_sbox`, instanciadas por eles.
 
 Validação adicional: os testbenches foram propositalmente executados contra
 versões alteradas do RTL (um byte errado na S-box e um deslocamento errado no
