@@ -139,6 +139,7 @@ grep -h "PASS\|FAIL" docs/reports/logs/sim_*.log
 
 - `docs/architecture/microarquitetura_v1.0.md` — microarquitetura do MiniSoC AES.
 - `docs/reports/estudo_aes_spi.md` — estudo sobre AES (FIPS-197) e SPI.
+- `docs/reports/leitura_fips197.md` — guia de leitura da FIPS 197-upd1 (tradução das seções relevantes, com figuras).
 - `docs/reports/semana_XX.md` — relatório de cada semana.
 - `docs/backlog.md` — backlog do projeto, alinhado ao cronograma.
 
