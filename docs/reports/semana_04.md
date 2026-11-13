@@ -83,11 +83,15 @@ InvMixColumns aplicado na última rodada da decifra — e falhou em todas.
 
 | Etapa | Resultado |
 |-------|-----------|
-| `minisoc_aes_sbox_tb` | <!-- preencher --> |
-| `minisoc_aes_sub_shift_tb` | <!-- preencher --> |
-| `minisoc_aes_round_tb` | <!-- preencher --> |
-| `minisoc_aes_dp_tb` | <!-- preencher: PASS (84 verificacoes) --> |
-| Lint (9 módulos de topo) | <!-- preencher --> |
+| `minisoc_aes_sbox_tb` | **PASS** — 514 verificações |
+| `minisoc_aes_sub_shift_tb` | **PASS** — 20 verificações |
+| `minisoc_aes_round_tb` | **PASS** — 21 verificações |
+| `minisoc_aes_dp_tb` | **PASS** — 84 verificações (round keys, cifra e decifra dos Apêndices B e C.1, 8 vetores do modelo de referência, latência e start durante busy) |
+| Lint dos 9 módulos de topo (inclusive `minisoc_aes_key_exp` e `minisoc_aes_dp`) | 0 fatal, 0 error, 0 warning, 2 infos em cada (após a correção da seção 4) |
+| Fluxo completo (`make test`) | `=== Fluxo concluido com sucesso ===` |
+
+Ferramentas: SpyGlass X-2025.06-SP2 e VCS X-2025.06-SP2, em 13/11/2026. Logs
+completos em `docs/reports/logs/`.
 
 ## 4. Problemas encontrados
 
