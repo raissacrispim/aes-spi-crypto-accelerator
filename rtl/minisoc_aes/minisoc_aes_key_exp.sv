@@ -74,11 +74,61 @@ module minisoc_aes_key_exp (
         return {v[6:0], 1'b0} ^ (v[7] ? 8'h1b : 8'h00);
     endfunction
 
-    // ---------------- Controle e armazenamento ----------------
+    // ---------------- Controle: proximo estado (combinacional) ----------------
+    //
+    // Logica de proximo estado separada dos registradores (regra STARC
+    // 2.11.3.1: estado e proximo estado em blocos always distintos).
+
+    logic [127:0] cur_d;
+    logic [3:0]   round_d;
+    logic [7:0]   rcon_d;
+    logic         busy_d;
+    logic         ready_d;
+    logic         done_d;
+    logic         rk_we;              // escrita no banco de round keys
+    logic [3:0]   rk_widx;
+    logic [127:0] rk_wdata;
+
+    always_comb begin
+        cur_d    = cur_q;
+        round_d  = round_q;
+        rcon_d   = rcon_q;
+        busy_d   = busy_q;
+        ready_d  = ready_q;
+        done_d   = 1'b0;
+        rk_we    = 1'b0;
+        rk_widx  = round_q;
+        rk_wdata = next_rk;
+
+        if (i_start && !busy_q) begin
+            // Ciclo de carga: rk0 = chave
+            rk_we    = 1'b1;
+            rk_widx  = 4'd0;
+            rk_wdata = i_key;
+            cur_d    = i_key;
+            round_d  = 4'd1;
+            rcon_d   = 8'h01;
+            busy_d   = 1'b1;
+            ready_d  = 1'b0;
+        end else if (busy_q) begin
+            // Round key round_q
+            rk_we  = 1'b1;
+            cur_d  = next_rk;
+            rcon_d = xtime(rcon_q);
+            if (round_q == 4'd10) begin
+                busy_d  = 1'b0;
+                ready_d = 1'b1;
+                done_d  = 1'b1;
+            end else begin
+                round_d = round_q + 4'd1;
+            end
+        end
+    end
+
+    // ---------------- Registradores ----------------
 
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            for (int i = 0; i <= 10; i++) rk_q[i] <= '0;
             cur_q   <= '0;
             round_q <= 4'd0;
             rcon_q  <= 8'h00;
@@ -86,27 +136,21 @@ module minisoc_aes_key_exp (
             ready_q <= 1'b0;
             done_q  <= 1'b0;
         end else begin
-            done_q <= 1'b0;
+            cur_q   <= cur_d;
+            round_q <= round_d;
+            rcon_q  <= rcon_d;
+            busy_q  <= busy_d;
+            ready_q <= ready_d;
+            done_q  <= done_d;
+        end
+    end
 
-            if (i_start && !busy_q) begin
-                rk_q[0] <= i_key;
-                cur_q   <= i_key;
-                round_q <= 4'd1;
-                rcon_q  <= 8'h01;
-                busy_q  <= 1'b1;
-                ready_q <= 1'b0;
-            end else if (busy_q) begin
-                rk_q[round_q] <= next_rk;
-                cur_q         <= next_rk;
-                rcon_q        <= xtime(rcon_q);
-                if (round_q == 4'd10) begin
-                    busy_q  <= 1'b0;
-                    ready_q <= 1'b1;
-                    done_q  <= 1'b1;
-                end else begin
-                    round_q <= round_q + 4'd1;
-                end
-            end
+    // Banco de round keys (11 x 128 bits)
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            for (int i = 0; i <= 10; i++) rk_q[i] <= '0;
+        end else if (rk_we) begin
+            rk_q[rk_widx] <= rk_wdata;
         end
     end
 

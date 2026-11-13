@@ -94,6 +94,12 @@ InvMixColumns aplicado na última rodada da decifra — e falhou em todas.
 - A especificação inicial da microarquitetura previa 10 ciclos para a expansão
   de chave; o testbench mostrou que são 11 (o ciclo de carga da chave também
   conta). O documento foi corrigido.
+- O lint do `minisoc_aes_key_exp` apontou 1 warning, **STARC05-2.11.3.1
+  (SepStateNextLogic)**: o contador `round_q` foi reconhecido como estado de
+  FSM, e o próximo estado era calculado no mesmo bloco `always_ff` que o
+  registra. O módulo foi reescrito com a lógica de próximo estado em um
+  `always_comb` e os registradores em `always_ff` separados; o comportamento
+  não mudou (mesmos testes passando).
 
 ## 5. Próximos passos (Semana 5)
 
