@@ -32,6 +32,8 @@ read_file -type hdl rtl/minisoc_aes/minisoc_aes_inv_shift_rows.sv
 read_file -type hdl rtl/minisoc_aes/minisoc_aes_mix_columns.sv
 read_file -type hdl rtl/minisoc_aes/minisoc_aes_inv_mix_columns.sv
 read_file -type hdl rtl/minisoc_aes/minisoc_aes_add_round_key.sv
+read_file -type hdl rtl/minisoc_aes/minisoc_aes_key_exp.sv
+read_file -type hdl rtl/minisoc_aes/minisoc_aes_dp.sv
 current_methodology: info: methodology is now `/Tools/synopsys/spyglass/X-2025.06-SP2/SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff'
 current_goal: info: removed current goals (sg_shell is now back to methodology scope)
                     (selected methodology is `/Tools/synopsys/spyglass/X-2025.06-SP2/SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff')
@@ -67,7 +69,7 @@ INFO [6]    Work Directory 'build/lint/minisoc_aes_add_round_key/minisoc_aes_add
 
 INFO [75]    Creating the Work Directory 'build/lint/minisoc_aes_add_round_key/minisoc_aes_add_round_key/WORK/64' for 64bit  precompiled dump.
 Checking Rule SGDC_power_est29 (Rule 1 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
-Checking Rule PECHECK04 (Rule 2 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
+Checking Rule PECHECK04 (Rule 2 of total 292) .... done (Time = 0.01s, Memory = 0.0K)
 Checking Rule PECHECK18 (Rule 3 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule PEMVDD01 (Rule 4 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule PrecompileLibCheck01 (Rule 5 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
@@ -144,6 +146,8 @@ Checking Rule ReportIgnoreSummary (Rule 69 of total 292) .... done (Time = 0.00s
  Analyzing source file "rtl/minisoc_aes/minisoc_aes_mix_columns.sv" ....
  Analyzing source file "rtl/minisoc_aes/minisoc_aes_inv_mix_columns.sv" ....
  Analyzing source file "rtl/minisoc_aes/minisoc_aes_add_round_key.sv" ....
+ Analyzing source file "rtl/minisoc_aes/minisoc_aes_key_exp.sv" ....
+ Analyzing source file "rtl/minisoc_aes/minisoc_aes_dp.sv" ....
  Elaborating Top Verilog Design Unit 'minisoc_aes_add_round_key' ..... done
 Checking Rule ElabSummary (Rule 70 of total 292) .... done (Time = 0.00s, Memory = 0.0K)
 Checking Rule ViolationLimitReached (Rule 71 of total 292) .... done (Time = 0.00s, Memory = 0.0K)

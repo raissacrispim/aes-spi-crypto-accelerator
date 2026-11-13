@@ -1,5 +1,5 @@
                          Chronologic VCS (TM)
-       Version X-2025.06-SP2_Full64 -- Wed Nov  4 14:52:02 2026
+       Version X-2025.06-SP2_Full64 -- Fri Nov 13 12:52:57 2026
 
                     Copyright (c) 1991 - 2025 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -26,6 +26,8 @@ Parsing design file 'rtl/minisoc_aes/minisoc_aes_inv_shift_rows.sv'
 Parsing design file 'rtl/minisoc_aes/minisoc_aes_mix_columns.sv'
 Parsing design file 'rtl/minisoc_aes/minisoc_aes_inv_mix_columns.sv'
 Parsing design file 'rtl/minisoc_aes/minisoc_aes_add_round_key.sv'
+Parsing design file 'rtl/minisoc_aes/minisoc_aes_key_exp.sv'
+Parsing design file 'rtl/minisoc_aes/minisoc_aes_dp.sv'
 Parsing design file 'tb/minisoc_aes_sbox_tb.sv'
 Top Level Modules:
        minisoc_aes_sbox_tb
@@ -36,7 +38,7 @@ recompiling module minisoc_aes_sbox_tb
 make[1]: Entering directory '/home/raissa.crispim/aes_spi/build/minisoc_aes_sbox_tb/csrc'
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 if [ -x /home/raissa.crispim/aes_spi/build/minisoc_aes_sbox_tb/simv ]; then chmod a-x /home/raissa.crispim/aes_spi/build/minisoc_aes_sbox_tb/simv; fi
-g++  -o /home/raissa.crispim/aes_spi/build/minisoc_aes_sbox_tb/simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir -Wl,-rpath=/Tools/synopsys/vcs/X-2025.06-SP2/linux64/lib -L/Tools/synopsys/vcs/X-2025.06-SP2/linux64/lib  -Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/amcQw_d.o   _2443764_archive_1.so   SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o            -lvirsim -lerrorinf -lsnpsmalloc -lvfs      -lvcsnew -ldistsimclient -lsimprofile -luclinative /Tools/synopsys/vcs/X-2025.06-SP2/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive          /Tools/synopsys/vcs/X-2025.06-SP2/linux64/lib/vcs_save_restore_new.o -ldl  -lc -lm -lpthread -ldl 
+g++  -o /home/raissa.crispim/aes_spi/build/minisoc_aes_sbox_tb/simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir -Wl,-rpath=/Tools/synopsys/vcs/X-2025.06-SP2/linux64/lib -L/Tools/synopsys/vcs/X-2025.06-SP2/linux64/lib  -Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/amcQw_d.o   _3342509_archive_1.so   SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o            -lvirsim -lerrorinf -lsnpsmalloc -lvfs      -lvcsnew -ldistsimclient -lsimprofile -luclinative /Tools/synopsys/vcs/X-2025.06-SP2/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive          /Tools/synopsys/vcs/X-2025.06-SP2/linux64/lib/vcs_save_restore_new.o -ldl  -lc -lm -lpthread -ldl 
 /home/raissa.crispim/aes_spi/build/minisoc_aes_sbox_tb/simv up to date
 make[1]: Leaving directory '/home/raissa.crispim/aes_spi/build/minisoc_aes_sbox_tb/csrc'
-CPU time: .644 seconds to compile + .340 seconds to elab + .540 seconds to link
+CPU time: .642 seconds to compile + .331 seconds to elab + .536 seconds to link

@@ -1,0 +1,11 @@
+Chronologic VCS simulator copyright 1991-2025
+Contains Synopsys proprietary information.
+Compiler version X-2025.06-SP2_Full64; Runtime version X-2025.06-SP2_Full64;  Nov 13 12:53 2026
+=== minisoc_aes_dp_tb ===
+PASS: expansao de chave e datapath AES-128, cifra e decifra (84 verificacoes)
+$finish called from file "tb/minisoc_aes_dp_tb.sv", line 242.
+$finish at simulation time              3780000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 3780000 ps
+CPU Time:      0.360 seconds;       Data structure size:   0.0Mb
+Fri Nov 13 12:53:09 2026
