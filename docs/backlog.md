@@ -37,9 +37,10 @@ Cada entrega é identificada por *tag* e acompanhada de
 
 ## Semana 4 — Expansão de chave e datapath AES-128 (13/11)
 
-- [ ] `minisoc_aes_key_exp` (11 round keys; pré-computada ou on-the-fly, justificada).
-- [ ] `minisoc_aes_dp`: cifra e cifra inversa de um bloco, interface start/done.
-- [ ] Testbench com os vetores da FIPS-197 nos dois sentidos.
+- [x] `minisoc_aes_key_exp` (11 round keys; pré-computada ou on-the-fly, justificada).
+- [x] `minisoc_aes_dp`: cifra e cifra inversa de um bloco, interface start/done.
+- [x] Testbench com os vetores da FIPS-197 nos dois sentidos.
+- [ ] Execução com VCS/SpyGlass, logs e relatório `semana_04.md` completos.
 
 **Aceite:** cifragem e decriptação conferem com os vetores; lint sem erros.
 

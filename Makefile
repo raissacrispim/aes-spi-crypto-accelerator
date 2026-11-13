@@ -23,7 +23,8 @@ LOG_DIR  = docs/reports/logs
 # Testbenches: tb/<nome>.sv, com modulo de topo de mesmo nome
 TESTS = minisoc_aes_sbox_tb \
         minisoc_aes_sub_shift_tb \
-        minisoc_aes_round_tb
+        minisoc_aes_round_tb \
+        minisoc_aes_dp_tb
 
 # Modulos analisados pelo lint (cada um como topo)
 LINT_TOPS = minisoc_aes_sub_bytes \
@@ -32,7 +33,9 @@ LINT_TOPS = minisoc_aes_sub_bytes \
             minisoc_aes_inv_shift_rows \
             minisoc_aes_mix_columns \
             minisoc_aes_inv_mix_columns \
-            minisoc_aes_add_round_key
+            minisoc_aes_add_round_key \
+            minisoc_aes_key_exp \
+            minisoc_aes_dp
 
 LINT_TARGETS = $(addprefix lint-,$(LINT_TOPS))
 SIM_TARGETS  = $(addprefix sim-,$(TESTS))

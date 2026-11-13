@@ -113,6 +113,7 @@ Os arquivos gerados ficam em `build/` (não versionado). Os logs ficam em
 | `minisoc_aes_sbox_tb` | S-box e S-box inversa nas 256 entradas, contra referência calculada em GF(2^8) |
 | `minisoc_aes_sub_shift_tb` | SubBytes, ShiftRows e inversas com os vetores da FIPS-197 (Apêndices B e C.1) |
 | `minisoc_aes_round_tb` | MixColumns, InvMixColumns e AddRoundKey (Apêndices B e C.1) e cifragem/decriptação completas encadeando todas as transformações |
+| `minisoc_aes_dp_tb` | expansão de chave e datapath AES-128: round keys (Apêndices A.1 e C.1), cifra e decifra (Apêndices B e C.1 e 8 vetores de um modelo Python), latência e start durante busy |
 
 ## Resultado esperado
 
@@ -149,7 +150,8 @@ grep -h "PASS\|FAIL" docs/reports/logs/sim_*.log
 | 1 | `w01-setup-v1.1` | ambiente, estrutura do repositório, backlog, fluxo mínimo e estudo AES/SPI |
 | 2 | `w02-sbox-v1.0` | S-box, SubBytes, ShiftRows (e inversas) + testbenches |
 | 3 | `w03-uarch-v1.0` | microarquitetura v1.0 + todas as transformações de rodada |
+| 4 | `w04-dp-v1.0` | expansão de chave + datapath AES-128 (cifra e decifra) |
 
 ## Status
 
-Semana 3 em andamento — microarquitetura e transformações de rodada.
+Semana 4 concluída. Próxima etapa: Semana 5 — SPI front-end, banco de registradores e PLL mock.

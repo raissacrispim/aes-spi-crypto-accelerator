@@ -115,7 +115,8 @@ InvMixColumns (omitido na última rodada).
 | `i_block[127:0]` | I | bloco de entrada |
 | `o_rk_idx[3:0]` | O | índice da round key pedida à expansão de chave |
 | `i_rk[127:0]` | I | round key correspondente |
-| `o_block[127:0]` | O | bloco de saída (válido com `o_done`) |
+| `o_block[127:0]` | O | bloco de saída (válido com `o_done` e estável até o próximo `i_start`) |
+| `o_busy` | O | datapath processando um bloco (`i_start` é ignorado) |
 | `o_done` | O | pulso de um ciclo ao fim do bloco |
 
 **Justificativa.**
@@ -147,9 +148,24 @@ pelo índice (`o_rk_idx`).
 
 - A chave não muda durante uma operação (é capturada no START, BG §8.3), então
   as round keys são reaproveitadas pelos até 256 blocos.
-- A expansão é iterativa: uma round key por ciclo, **10 ciclos** por operação.
+- A expansão é iterativa: um ciclo de carga e uma round key por ciclo,
+  **11 ciclos** por operação.
 - Na decriptação, as chaves são simplesmente lidas em ordem inversa
   (rk10 → rk0), sem lógica adicional.
+- A lógica de uma round key usa 4 S-boxes (SubWord), uma rotação (RotWord) e
+  XORs; o `rcon` é gerado por `xtime` a cada round key.
+
+**Interface:**
+
+| Sinal | Dir. | Descrição |
+|-------|------|-----------|
+| `i_start` | I | inicia a expansão de `i_key` (pulso) |
+| `i_key[127:0]` | I | chave AES-128 |
+| `o_busy` | O | expansão em andamento |
+| `o_ready` | O | as 11 round keys da última chave estão prontas |
+| `o_done` | O | pulso de um ciclo ao fim da expansão |
+| `i_rk_idx[3:0]` | I | índice da round key (0..10) |
+| `o_rk[127:0]` | O | round key `i_rk_idx` (leitura combinacional) |
 
 | Alternativa | Armazenamento | Custo por bloco | Decriptação |
 |-------------|---------------|-----------------|-------------|
@@ -157,7 +173,7 @@ pelo índice (`o_rk_idx`).
 | On-the-fly | 128 FFs + 128 (rk10) | lógica de expansão a cada rodada | exige agenda inversa de chave e guardar rk10 |
 
 **Justificativa:** tira a lógica de expansão do caminho crítico da rodada,
-simplifica a decriptação e o custo de 10 ciclos é amortizado em toda a
+simplifica a decriptação e o custo de 11 ciclos é amortizado em toda a
 operação. O custo é a área do banco de chaves; ele será medido na síntese
 (Semana 8) e a alternativa on-the-fly fica registrada como opção de redução de
 área.
@@ -210,7 +226,7 @@ stateDiagram-v2
 |--------|-------|-------------------------------|
 | `IDLE` | `BUSY = 0`; aguarda START | — |
 | `CHECK` | captura KEY, IV, COUNTER, MODE, DECRYPT, NUM_BLOCKS (BG §8.3); limpa DONE, ERROR, BLOCKS_DONE; valida NUM_BLOCKS ∈ 1..256 e MODE ∈ 000..101 | 1 |
-| `KEY_EXP` | dispara a expansão de chave e aguarda | 10 |
+| `KEY_EXP` | dispara a expansão de chave e aguarda | 11 |
 | `READ` | lê as palavras `4·blk + 0..3` e monta o bloco (Word 0 = `[127:96]`) | 5 (memória síncrona, 1 ciclo de latência [Dúvida 2]) |
 | `RUN` | aplica o encadeamento de entrada, inicia o datapath e aguarda `o_done` | 11 + 1 |
 | `WRITE` | aplica o encadeamento de saída e escreve as 4 palavras no mesmo endereço | 4 |
@@ -223,7 +239,7 @@ stateDiagram-v2
   memória (BG §8.2). Hipótese: `DONE` também é sinalizado, para que o software
   que espera por DONE (BG §9, passo 12) não fique preso [Dúvida 11].
 - **START enquanto BUSY:** ignorado [Dúvida 10].
-- **Desempenho estimado:** ~23 ciclos por bloco + 11 por operação; 256 blocos
+- **Desempenho estimado:** ~23 ciclos por bloco + 12 por operação; 256 blocos
   ≈ 5 900 ciclos de `sys_clk`.
 
 ## 4. SPI front-end e banco de registradores (`minisoc_spi`)
@@ -359,3 +375,4 @@ Semana 2 e serão confirmadas com o instrutor. Acrescenta-se:
 | Versão | Data | Descrição |
 |--------|------|-----------|
 | 1.0 | 06/11/2026 | Primeira versão: datapath iterativo, expansão pré-computada, FSM, CDC e reset |
+| 1.1 | 13/11/2026 | Interfaces do `minisoc_aes_dp` e do `minisoc_aes_key_exp` conforme a implementação; latência da expansão corrigida para 11 ciclos |
